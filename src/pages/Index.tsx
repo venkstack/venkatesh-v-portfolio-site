@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -97,7 +96,7 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl shadow-lg z-50 border-b border-blue-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="font-bold text-xl text-gray-800 tracking-wide">Venkatesh V T</div>
+            <div className="font-bold text-xl text-gray-800 tracking-wide">V T Venkatesh</div>
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">About</button>
               <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">Skills</button>
@@ -113,14 +112,18 @@ const Index = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className={`transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <FloatingElement>
-              <div className="w-40 h-40 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all duration-500 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full animate-ping opacity-20"></div>
-                <User size={64} className="text-white z-10" />
+              <div className="w-56 h-56 mx-auto mb-8 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-500 animate-pulse opacity-20"></div>
+                <img 
+                  src="/lovable-uploads/bfbc7e62-d065-4b73-85ea-9597a375e149.png" 
+                  alt="V T Venkatesh"
+                  className="w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/50 backdrop-blur-sm transform hover:scale-105 transition-all duration-500 z-10 relative"
+                />
               </div>
             </FloatingElement>
             
             <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 tracking-tight">
-              Venkatesh V T
+              V T Venkatesh
             </h1>
             
             <div className="space-y-4 mb-10">
@@ -352,12 +355,12 @@ const Index = () => {
       <footer className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-300 text-lg">
-            © 2024 Venkatesh V T. Crafted with passion, powered by innovation, and built for the future.
+            © 2024 V T Venkatesh. Crafted with passion, powered by innovation, and built for the future.
           </p>
         </div>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
