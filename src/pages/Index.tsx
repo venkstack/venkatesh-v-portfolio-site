@@ -26,42 +26,48 @@ const Index = () => {
       level: 85, 
       icon: <Cpu className="w-6 h-6" />,
       description: "Building robust enterprise applications and scalable backend systems with object-oriented programming excellence.",
-      color: "from-orange-400 to-red-500"
+      color: "from-orange-400 to-red-500",
+      bgColor: "#f97316"
     },
     { 
       name: "Python", 
       level: 80, 
       icon: <Brain className="w-6 h-6" />,
       description: "Creating intelligent solutions, data analysis scripts, and automation tools that simplify complex workflows.",
-      color: "from-blue-400 to-green-500"
+      color: "from-blue-400 to-green-500",
+      bgColor: "#3b82f6"
     },
     { 
       name: "C Programming", 
       level: 75, 
       icon: <Code className="w-6 h-6" />,
       description: "Mastering low-level programming fundamentals and memory management for efficient system-level applications.",
-      color: "from-gray-400 to-blue-600"
+      color: "from-gray-400 to-blue-600",
+      bgColor: "#6b7280"
     },
     { 
       name: "Web Development", 
       level: 70, 
       icon: <Globe className="w-6 h-6" />,
       description: "Crafting responsive and interactive web experiences using modern HTML, CSS, and JavaScript frameworks.",
-      color: "from-purple-400 to-pink-500"
+      color: "from-purple-400 to-pink-500",
+      bgColor: "#a855f7"
     },
     { 
       name: "AI Tools & Prompting", 
       level: 90, 
       icon: <Zap className="w-6 h-6" />,
       description: "Leveraging cutting-edge AI technologies and prompt engineering to enhance productivity and solve complex problems.",
-      color: "from-yellow-400 to-orange-500"
+      color: "from-yellow-400 to-orange-500",
+      bgColor: "#fbbf24"
     },
     { 
       name: "Automation", 
       level: 80, 
       icon: <Wrench className="w-6 h-6" />,
       description: "Designing smart workflows and automated systems that eliminate repetitive tasks and boost efficiency.",
-      color: "from-green-400 to-teal-500"
+      color: "from-green-400 to-teal-500",
+      bgColor: "#10b981"
     }
   ];
 
@@ -256,10 +262,11 @@ const Index = () => {
               >
                 <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm transform group-hover:rotateX-5 group-hover:translateY-2 group-hover:scale-105 h-full relative overflow-hidden">
                   {/* Interactive 3D Background Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-all duration-500 pointer-events-none"
-                       style={{
-                         background: `linear-gradient(135deg, ${skill.color.split(' ')[0].replace('from-', '')}, ${skill.color.split(' ')[2].replace('to-', '')})`
-                       }}>
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-all duration-500 pointer-events-none"
+                    style={{
+                      backgroundColor: skill.bgColor
+                    }}>
                   </div>
                   
                   <CardContent className="p-8 relative z-10">
