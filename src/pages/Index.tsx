@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -83,13 +84,33 @@ const Index = () => {
     </div>
   );
 
+  // Interactive 3D mouse follower element
+  const MouseFollower = () => (
+    <div
+      className="fixed pointer-events-none z-50 opacity-30"
+      style={{
+        left: mousePosition.x - 25,
+        top: mousePosition.y - 25,
+        transition: 'all 0.3s ease-out',
+      }}
+    >
+      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg animate-pulse"></div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Floating Background Elements */}
+      <MouseFollower />
+      
+      {/* Enhanced Floating Background Elements with 3D effects */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 left-20 w-36 h-36 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse transform hover:scale-110 transition-all duration-1000"></div>
+        <div className="absolute top-40 right-20 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse transform hover:scale-110 transition-all duration-1000" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 left-20 w-36 h-36 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse transform hover:scale-110 transition-all duration-1000" style={{ animationDelay: '4s' }}></div>
+        
+        {/* Additional 3D floating elements */}
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 right-1/3 w-28 h-28 bg-gradient-to-r from-violet-300 to-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-bounce" style={{ animationDelay: '3s' }}></div>
       </div>
 
       {/* Navigation */}
@@ -98,10 +119,10 @@ const Index = () => {
           <div className="flex justify-between items-center py-4">
             <div className="font-bold text-xl text-gray-800 tracking-wide">V T Venkatesh</div>
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">About</button>
-              <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">Skills</button>
-              <button onClick={() => scrollToSection('education')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">Education</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium">Contact</button>
+              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium transform hover:rotate-1">About</button>
+              <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium transform hover:rotate-1">Skills</button>
+              <button onClick={() => scrollToSection('education')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium transform hover:rotate-1">Education</button>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium transform hover:rotate-1">Contact</button>
             </div>
           </div>
         </div>
@@ -112,17 +133,24 @@ const Index = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className={`transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <FloatingElement>
-              <div className="w-56 h-56 mx-auto mb-8 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-500 animate-pulse opacity-20"></div>
+              <div className="w-56 h-56 mx-auto mb-8 relative group">
+                {/* 3D Layered Background Effects */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600 rounded-full shadow-2xl transform group-hover:scale-110 transition-all duration-500 animate-pulse opacity-20"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-all duration-700"></div>
+                
                 <img 
-                  src="/lovable-uploads/bfbc7e62-d065-4b73-85ea-9597a375e149.png" 
+                  src="/lovable-uploads/bdaa6f34-bba7-4d13-9b66-56e24832148b.png" 
                   alt="V T Venkatesh"
-                  className="w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/50 backdrop-blur-sm transform hover:scale-105 transition-all duration-500 z-10 relative"
+                  className="w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/50 backdrop-blur-sm transform group-hover:scale-105 transition-all duration-500 z-10 relative group-hover:rotate-3"
                 />
+                
+                {/* Interactive 3D Ring Animation */}
+                <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-spin-slow"></div>
               </div>
             </FloatingElement>
             
-            <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 tracking-tight">
+            <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 tracking-tight transform hover:scale-105 transition-all duration-500">
               V T Venkatesh
             </h1>
             
@@ -141,7 +169,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 onClick={() => scrollToSection('contact')} 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg font-medium"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 text-lg font-medium"
               >
                 <Mail className="mr-3" size={24} />
                 Let's Connect
@@ -149,7 +177,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 onClick={() => window.open('https://github.com/venkstack', '_blank')}
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg font-medium"
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 text-lg font-medium"
               >
                 <Github className="mr-3" size={24} />
                 View GitHub
@@ -168,12 +196,12 @@ const Index = () => {
           </div>
           
           <div className="perspective-1000">
-            <Card className="shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 transform hover:rotateY-2 transition-all duration-500 hover:shadow-3xl">
+            <Card className="shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 transform hover:rotateY-2 transition-all duration-500 hover:shadow-3xl group">
               <CardContent className="p-12 md:p-16">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
                     <FloatingElement delay={1}>
-                      <div className="w-28 h-28 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-8 shadow-xl transform hover:rotate-12 transition-all duration-500">
+                      <div className="w-28 h-28 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-8 shadow-xl transform group-hover:rotate-12 transition-all duration-500 group-hover:scale-110">
                         <Briefcase size={40} className="text-white" />
                       </div>
                     </FloatingElement>
@@ -191,8 +219,10 @@ const Index = () => {
                       { icon: <Zap className="text-yellow-600" size={24} />, text: "AI enthusiast and early adopter" },
                       { icon: <Wrench className="text-green-600" size={24} />, text: "Automation advocate for efficiency" }
                     ].map((item, index) => (
-                      <div key={index} className="flex items-center space-x-4 p-4 rounded-xl bg-white/70 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        {item.icon}
+                      <div key={index} className="flex items-center space-x-4 p-4 rounded-xl bg-white/70 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 group">
+                        <div className="transform group-hover:scale-125 transition-all duration-300">
+                          {item.icon}
+                        </div>
                         <span className="text-gray-700 font-medium text-lg">{item.text}</span>
                       </div>
                     ))}
@@ -204,7 +234,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Enhanced Skills Section with Interactive 3D Cards */}
       <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -224,32 +254,41 @@ const Index = () => {
                   animation: `fadeInUp 0.8s ease-out ${index * 0.2}s both`
                 }}
               >
-                <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm transform group-hover:rotateX-5 group-hover:translateY-2 h-full">
-                  <CardContent className="p-8">
+                <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm transform group-hover:rotateX-5 group-hover:translateY-2 group-hover:scale-105 h-full relative overflow-hidden">
+                  {/* Interactive 3D Background Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-all duration-500 pointer-events-none"
+                       style={{
+                         background: `linear-gradient(135deg, ${skill.color.split(' ')[0].replace('from-', '')}, ${skill.color.split(' ')[2].replace('to-', '')})`
+                       }}>
+                  </div>
+                  
+                  <CardContent className="p-8 relative z-10">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${skill.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${skill.color} flex items-center justify-center text-white shadow-lg group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`}>
                           {skill.icon}
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800">{skill.name}</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">{skill.name}</h3>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                        <span className="text-blue-600 font-bold text-lg">{skill.level}%</span>
+                        <Star className="w-5 h-5 text-yellow-500 fill-current group-hover:animate-spin" />
+                        <span className="text-blue-600 font-bold text-lg group-hover:scale-110 transition-transform duration-300">{skill.level}%</span>
                       </div>
                     </div>
                     
-                    <p className="text-gray-600 leading-relaxed mb-6 text-base">
+                    <p className="text-gray-600 leading-relaxed mb-6 text-base group-hover:text-gray-700 transition-colors duration-300">
                       {skill.description}
                     </p>
                     
                     <div className="relative">
                       <div className="w-full bg-gray-200 rounded-full h-4 shadow-inner">
                         <div 
-                          className={`bg-gradient-to-r ${skill.color} h-4 rounded-full transition-all duration-1000 ease-out shadow-lg relative overflow-hidden`}
+                          className={`bg-gradient-to-r ${skill.color} h-4 rounded-full transition-all duration-1000 ease-out shadow-lg relative overflow-hidden group-hover:animate-pulse`}
                           style={{ width: `${skill.level}%` }}
                         >
                           <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
+                          {/* Interactive shine effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-1000"></div>
                         </div>
                       </div>
                     </div>
@@ -270,11 +309,11 @@ const Index = () => {
           </div>
           
           <div className="perspective-1000">
-            <Card className="shadow-2xl border-0 bg-gradient-to-br from-white to-indigo-50 transform hover:rotateY-2 transition-all duration-500 hover:shadow-3xl">
+            <Card className="shadow-2xl border-0 bg-gradient-to-br from-white to-indigo-50 transform hover:rotateY-2 transition-all duration-500 hover:shadow-3xl group">
               <CardContent className="p-12 md:p-16">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                   <FloatingElement delay={2}>
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0 transform hover:rotate-12 transition-all duration-500">
+                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                       <GraduationCap size={40} className="text-white" />
                     </div>
                   </FloatingElement>
@@ -296,7 +335,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Enhanced Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -312,14 +351,14 @@ const Index = () => {
               <Card className="shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-indigo-100 hover:shadow-3xl transition-all duration-500 transform hover:rotateY-5 group">
                 <CardContent className="p-10 text-center">
                   <FloatingElement delay={3}>
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
                       <Mail size={32} className="text-white" />
                     </div>
                   </FloatingElement>
                   <h3 className="text-2xl font-semibold text-gray-800 mb-4">Email Me</h3>
                   <a 
                     href="mailto:vtvenkatesh28@gmail.com" 
-                    className="text-blue-600 hover:text-blue-700 transition-colors font-medium text-lg hover:underline"
+                    className="text-blue-600 hover:text-blue-700 transition-colors font-medium text-lg hover:underline transform hover:scale-105 inline-block"
                   >
                     vtvenkatesh28@gmail.com
                   </a>
@@ -331,7 +370,7 @@ const Index = () => {
               <Card className="shadow-2xl border-0 bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-3xl transition-all duration-500 transform hover:rotateY-5 group">
                 <CardContent className="p-10 text-center">
                   <FloatingElement delay={4}>
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
                       <Github size={32} className="text-white" />
                     </div>
                   </FloatingElement>
@@ -340,7 +379,7 @@ const Index = () => {
                     href="https://github.com/venkstack" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 transition-colors font-medium text-lg hover:underline"
+                    className="text-blue-600 hover:text-blue-700 transition-colors font-medium text-lg hover:underline transform hover:scale-105 inline-block"
                   >
                     github.com/venkstack
                   </a>
@@ -377,6 +416,15 @@ const Index = () => {
           }
         }
         
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
         .perspective-1000 {
           perspective: 1000px;
         }
@@ -391,6 +439,10 @@ const Index = () => {
         
         .rotateX-5:hover {
           transform: rotateX(5deg);
+        }
+        
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
         }
       `}</style>
     </div>
